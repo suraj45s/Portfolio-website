@@ -1,4 +1,5 @@
 // Smooth scrolling
+
 document.querySelectorAll("nav a").forEach(link=>{
     link.addEventListener("click",function(e){
         e.preventDefault();
@@ -53,3 +54,36 @@ setTimeout(type,120);
 }
 
 })();
+// EmailJS Initialization
+emailjs.init("s6VPPQ6hh41fvaHgT");
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Email to you
+    emailjs.sendForm(
+        "service_qijr7vs",
+        "template_j0f0sha",
+        this
+    ).then(function () {
+
+        // Auto reply to visitor
+        emailjs.send(
+            "service_qijr7vs",
+            "template_ls9sfx4",
+            {
+                name: form.name.value,
+                email: form.email.value
+            }
+        );
+
+        alert("Message sent successfully!");
+        form.reset();
+
+    }).catch(function (error) {
+        console.log(error);
+        alert("Failed to send message.");
+    });
+});
