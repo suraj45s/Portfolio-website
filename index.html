@@ -268,15 +268,23 @@ using HTML, CSS, JavaScript and modern frameworks.
 
 <h2 class="title">Contact Me</h2>
 
-<form action = "https://formsubmit.co/surajmishra2822@gmail.com" method = "POST">
+<form action="https://formsubmit.co/surajmishra2822@gmail.com" method="POST">
 
-<input type="hidden" name ="_captcha" value = "false">
+<input type="hidden" name="_captcha" value="false">
 
-<input type="hidden" name="_next" value = "https://portfolio-website-eosin-seven-32.vercel.app/">
+<input type="hidden" name="_next" value="https://portfolio-website-eosin-seven-32.vercel.app/">
 
-<textarea rows="6" placeholder="Message"></textarea>
+<input type="hidden" name="_autoresponse" value="Thank you for contacting me. I have received your message and will reply soon.">
 
-<button class="btn">
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<input type="text" name="subject" placeholder="Subject" required>
+
+<textarea name="message" rows="6" placeholder="Message" required></textarea>
+
+<button type="submit" class="btn">
 Send Message
 </button>
 
