@@ -54,7 +54,6 @@ setTimeout(type,120);
 }
 
 })();
-// EmailJS Initialization
 emailjs.init("s6VPPQ6hh41fvaHgT");
 
 const form = document.getElementById("contact-form");
@@ -62,25 +61,29 @@ const form = document.getElementById("contact-form");
 form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    // Email to you
-    emailjs.sendForm(
+    const data = {
+        name: form.name.value,
+        email: form.email.value,
+        subject: form.subject.value,
+        message: form.message.value
+    };
+
+    // Message to you
+    emailjs.send(
         "service_qijr7vs",
         "template_j0f0sha",
-        this
+        data
     ).then(function () {
 
-        // Auto reply to visitor
+        // Auto reply to user
         emailjs.send(
             "service_qijr7vs",
             "template_ls9sfx4",
-            {
-                name: form.name.value,
-                email: form.email.value
-            }
-        );
-
-        alert("Message sent successfully!");
-        form.reset();
+            data
+        ).then(function () {
+            alert("Message sent successfully!");
+            form.reset();
+        });
 
     }).catch(function (error) {
         console.log(error);
